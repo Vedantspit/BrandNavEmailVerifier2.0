@@ -155,12 +155,12 @@ class SMTPVerificationSC {
 			workerIndex === 0
 				? winston.loggers.get(loggerTypes.smtp0)
 				: workerIndex === 1
-				? winston.loggers.get(loggerTypes.smtp1)
-				: workerIndex === 2
-				? winston.loggers.get(loggerTypes.smtp2)
-				: workerIndex === 3
-				? winston.loggers.get(loggerTypes.smtp3)
-				: winston.loggers.get(loggerTypes.smtp);
+					? winston.loggers.get(loggerTypes.smtp1)
+					: workerIndex === 2
+						? winston.loggers.get(loggerTypes.smtp2)
+						: workerIndex === 3
+							? winston.loggers.get(loggerTypes.smtp3)
+							: winston.loggers.get(loggerTypes.smtp);
 
 		/** @private @type {string[]} Buffer to accumulate SMTP response fragments */
 		this._responseBuffer = [];
@@ -668,26 +668,26 @@ class SMTPVerificationSC {
 		}
 
 		// check if a STARTTLS interraction is required
-		// if (
-		// 	(dataStr?.toLowerCase()?.includes('starttls') || this._startTLS_requested) &&
-		// 	this._smtp_stage !== SMTPStages.ehlo
-		// ) {
-		// 	this.logger.debug(`Server requested to start a TLS connection: ${dataStr}`);
+		if (
+			(dataStr?.toLowerCase()?.includes('starttls') || this._startTLS_requested) &&
+			this._smtp_stage !== SMTPStages.ehlo
+		) {
+			this.logger.debug(`Server requested to start a TLS connection: ${dataStr}`);
 
-		// 	// send the start TLS command
-		// 	if (!this._startTLS_requested) {
-		// 		this._client?.write('STARTTLS\r\n');
-		// 		this.logger.debug('sent: STARTTLS');
-		// 		this._startTLS_requested = true;
-		// 		return;
-		// 	} else if (dataStr.toLowerCase().includes('220') && dataStr.toLowerCase().includes('start tls')) {
-		// 		const success = await this.upgradeConnection(smtpHost, res);
-		// 		this._startTLS_requested = false; // reset for future use
-		// 		if (success) return; // Don't let it proceed further without TLS
-		// 	} else {
-		// 		this._startTLS_requested = false; // reset for future use
-		// 	}
-		// }
+			// send the start TLS command
+			if (!this._startTLS_requested) {
+				this._client?.write('STARTTLS\r\n');
+				this.logger.debug('sent: STARTTLS');
+				this._startTLS_requested = true;
+				return;
+			} else if (dataStr.toLowerCase().includes('220') && dataStr.toLowerCase().includes('start tls')) {
+				const success = await this.upgradeConnection(smtpHost, res);
+				this._startTLS_requested = false; // reset for future use
+				if (success) return; // Don't let it proceed further without TLS
+			} else {
+				this._startTLS_requested = false; // reset for future use
+			}
+		}
 
 		// After EHLO, send MAIL FROM
 		if (this._smtp_stage === SMTPStages.mailFrom) {
