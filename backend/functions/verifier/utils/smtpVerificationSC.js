@@ -417,8 +417,8 @@ class SMTPVerificationSC {
 						socket: this._client,
 						servername: smtpHost,
 
-						minVersion: 'TLSv1.3', // Specify minimum TLS version
-						maxVersion: 'TLSv1.3', // Specify maximum TLS version
+						minVersion: 'TLSv1.2', // Specify minimum TLS version
+						// maxVersion: 'TLSv1.3', // Specify maximum TLS version
 						rejectUnauthorized: false, // Disable certificate verification for testing
 					},
 					() => {
