@@ -36,7 +36,10 @@ winston.loggers.add(loggerTypes.default, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.default}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.default },
@@ -53,7 +56,10 @@ winston.loggers.add(loggerTypes.server, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.server}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.server },
@@ -70,7 +76,10 @@ winston.loggers.add(loggerTypes.queue, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.queue}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.queue },
@@ -87,7 +96,10 @@ winston.loggers.add(loggerTypes.verifier, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.verifier}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.verifier },
@@ -104,7 +116,10 @@ for (let i = 0; i < verifierLoggers.length; i++) {
 		),
 		transports: [
 			new winston.transports.Console(),
-			new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+			new winston.transports.File({
+				filename: `.logs/all.txt`,
+				level: 'debug',
+			}),
 			new winston.transports.File({ filename: `.logs/${verifierLoggers[i]}.log`, level: 'debug' }),
 		],
 		defaultMeta: { service: verifierLoggers[i] },
@@ -122,7 +137,10 @@ winston.loggers.add(loggerTypes.smtp, {
 	),
 	transports: [
 		new winston.transports.Console({ level: 'error' }),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.smtp}.log`, level: 'debug' }),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.smtp}.error.log`, level: 'error' }),
 	],
@@ -140,7 +158,10 @@ for (let i = 0; i < smtpLoggers.length; i++) {
 		),
 		transports: [
 			new winston.transports.Console({ level: 'error' }),
-			new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+			new winston.transports.File({
+				filename: `.logs/all.txt`,
+				level: 'debug',
+			}),
 			new winston.transports.File({ filename: `.logs/${smtpLoggers[i]}.log`, level: 'debug' }),
 			new winston.transports.File({ filename: `.logs/${smtpLoggers[i]}.error.log`, level: 'error' }),
 		],
@@ -159,7 +180,10 @@ winston.loggers.add(loggerTypes.antiGreylist, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.antiGreylist}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.antiGreylist },
@@ -176,7 +200,10 @@ winston.loggers.add(loggerTypes.msLogin, {
 	),
 	transports: [
 		new winston.transports.Console({ level: 'error' }),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.msLogin}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.msLogin },
@@ -193,7 +220,10 @@ winston.loggers.add(loggerTypes.startupRecovery, {
 	),
 	transports: [
 		new winston.transports.Console(),
-		new winston.transports.File({ filename: `.logs/all.log`, level: 'error' }),
+		new winston.transports.File({
+			filename: `.logs/all.txt`,
+			level: 'debug',
+		}),
 		new winston.transports.File({ filename: `.logs/${loggerTypes.startupRecovery}.log`, level: 'debug' }),
 	],
 	defaultMeta: { service: loggerTypes.startupRecovery },
